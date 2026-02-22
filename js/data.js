@@ -326,56 +326,26 @@ export async function fetchConteudoById(id) {
   return conteudos.find(c => c.id === id) || null;
 }
 
-// ===== ACADEMIAS DA CIDADE (PAC) - Recife =====
+// ===== ACADEMIAS RECIFE =====
 // Coordenadas aproximadas baseadas nos bairros
 export const ACADEMIAS_DA_CIDADE = [
-  // DS I
-  { nome: 'Polo Parque da Macaxeira', endereco: 'Rua Odorico Mendes, S/N - Macaxeira', distrito: 'I', lat: -8.0095, lng: -34.9197 },
-  { nome: 'Polo Parque do Caiara', endereco: 'Av. Norte, S/N - Caiara', distrito: 'I', lat: -8.0165, lng: -34.9034 },
-  { nome: 'Polo Alto José Bonifácio', endereco: 'Rua São Luiz, S/N - Alto José Bonifácio', distrito: 'I', lat: -8.0378, lng: -34.8963 },
-  { nome: 'Polo Praça da Encruzilhada', endereco: 'Praça da Encruzilhada - Encruzilhada', distrito: 'I', lat: -8.0380, lng: -34.8812 },
-  { nome: 'Polo Sítio Novo / Dois Unidos', endereco: 'Rua Santo Elias, 161 - Dois Unidos', distrito: 'I', lat: -7.9938, lng: -34.9026 },
-  // DS II
-  { nome: 'Polo Chão de Estrelas', endereco: 'Av. Professor José dos Anjos, S/N - Campina do Barreto', distrito: 'II', lat: -8.0265, lng: -34.8793 },
-  { nome: 'Polo Jovem CAP', endereco: 'Rua Coronel Urbano Ribeiro de Souza, S/N - Cajueiro', distrito: 'II', lat: -8.0186, lng: -34.8860 },
-  { nome: 'Polo Alto do Capitão', endereco: 'Rua Tupiracaba, S/N - Dois Unidos', distrito: 'II', lat: -7.9966, lng: -34.8952 },
-  { nome: 'Polo CSU Afrânio Godoy', endereco: 'Av. Aníbal Benevolo, S/N - Alto Sta. Terezinha', distrito: 'II', lat: -8.0076, lng: -34.8870 },
-  // DS III
-  { nome: 'Polo Ermírio de Moraes', endereco: 'Av. 17 de Agosto, 2388 - Monteiro', distrito: 'III', lat: -8.0281, lng: -34.9210 },
-  { nome: 'Polo Sítio da Trindade', endereco: 'Estrada do Arraial, S/N - Casa Amarela', distrito: 'III', lat: -8.0196, lng: -34.9283 },
-  { nome: 'Polo Jaqueira', endereco: 'Rua do Futuro, S/N - Parque da Jaqueira', distrito: 'III', lat: -8.0380, lng: -34.9095 },
-  { nome: 'Polo Jardim do Poço', endereco: 'Av. 17 de Agosto, 2069 - Poço da Panela', distrito: 'III', lat: -8.0310, lng: -34.9200 },
-  { nome: 'Polo Parque Santana', endereco: 'Rua Jorge Gomes de Sá - Parque Santana', distrito: 'III', lat: -8.0130, lng: -34.9320 },
-  // DS IV
-  { nome: 'Polo Praça da Av. do Forte', endereco: 'Estrada do Forte Arraial Novo Bom Jesus, S/N - Torrões', distrito: 'IV', lat: -8.0657, lng: -34.9457 },
-  { nome: 'Polo Beira Rio / Torre', endereco: 'Av. Beira Rio, S/N - Torre', distrito: 'IV', lat: -8.0590, lng: -34.9105 },
-  { nome: 'Polo Praça do Salgueiro', endereco: 'Praça do Salgueiro - Iputinga', distrito: 'IV', lat: -8.0440, lng: -34.9440 },
-  { nome: 'Polo Cavouco', endereco: 'Praça Prof. Coelho de Almeida - Cordeiro', distrito: 'IV', lat: -8.0510, lng: -34.9480 },
-  { nome: 'Polo Praça do Engenho do Meio', endereco: 'Rua Antônio Curado, S/N - Engenho do Meio', distrito: 'IV', lat: -8.0490, lng: -34.9530 },
-  { nome: 'Polo Roda de Fogo', endereco: 'Av. Professor Artur Coutinho, S/N - Torrões', distrito: 'IV', lat: -8.0620, lng: -34.9510 },
-  { nome: 'Polo Praça do Poeta', endereco: 'Praça do Poeta, Av. Caxangá', distrito: 'IV', lat: -8.0500, lng: -34.9600 },
-  { nome: 'Polo Várzea', endereco: 'Praça da Várzea, Av. Afonso Olindense', distrito: 'IV', lat: -8.0415, lng: -34.9565 },
-  // DS V
-  { nome: 'Polo San Martin', endereco: 'Praça Noel Rodrigues - San Martin', distrito: 'V', lat: -8.0760, lng: -34.9310 },
-  { nome: 'Polo ABC', endereco: 'Av. Manoel Gonçalves da Luz, S/N - Mustardinha', distrito: 'V', lat: -8.0725, lng: -34.9230 },
-  { nome: 'Polo Praça do Mangue', endereco: 'Rua do Mangue, S/N - Afogados', distrito: 'V', lat: -8.0700, lng: -34.9020 },
-  { nome: 'Polo Praça Simão Borba', endereco: 'Rua Parente Viana, S/N - Juquiá', distrito: 'V', lat: -8.0815, lng: -34.9255 },
-  { nome: 'Polo Praça Heróis da Restauração', endereco: 'Rua Ipojuca - Areias', distrito: 'V', lat: -8.0800, lng: -34.9180 },
-  { nome: 'Polo Praça das Lavadeiras', endereco: 'Rua Palmares, S/N - Areias', distrito: 'V', lat: -8.0785, lng: -34.9165 },
-  { nome: 'Polo Jardim São Paulo', endereco: 'Praça de Jardim São Paulo', distrito: 'V', lat: -8.0850, lng: -34.9340 },
-  // DS VI
-  { nome: 'Polo Praia de Boa Viagem', endereco: '2º Jardim de Boa Viagem', distrito: 'VI', lat: -8.1130, lng: -34.8950 },
-  { nome: 'Polo Brasília Teimosa', endereco: 'Rua João Marques dos Santos - Brasília Teimosa', distrito: 'VI', lat: -8.0830, lng: -34.8710 },
-  { nome: 'Polo IPSEP', endereco: 'Praça Senador Roberto Kennedy - IPSEP', distrito: 'VI', lat: -8.1020, lng: -34.9230 },
-  { nome: 'Polo Lagoa do Araçá', endereco: 'Av. José F. Lins - Imbiribeira', distrito: 'VI', lat: -8.1100, lng: -34.9150 },
-  { nome: 'Polo Praça Cafesópolis', endereco: 'R. Des. Agenor Ferreira de Lima - Imbiribeira', distrito: 'VI', lat: -8.1165, lng: -34.9170 },
-  // DS VII
-  { nome: 'Polo Morro da Conceição', endereco: 'Praça do Morro da Conceição, 440', distrito: 'VII', lat: -8.0120, lng: -34.9160 },
-  { nome: 'Polo Um Por Todos', endereco: 'Rua Vila Um Por Todos, S/N - Vasco da Gama', distrito: 'VII', lat: -8.0190, lng: -34.9370 },
-  { nome: 'Polo Praça do Buriti', endereco: 'Av. Norte, S/N - Macaxeira', distrito: 'VII', lat: -8.0100, lng: -34.9230 },
-  // DS VIII
-  { nome: 'Polo Jordão Baixo', endereco: 'Av. Alberto Lundgren, S/N - Jordão', distrito: 'VIII', lat: -8.1350, lng: -34.9370 },
-  { nome: 'Polo Ibura / Praça da Vitória', endereco: 'Av. Pernambuco, UR 01 - Cohab', distrito: 'VIII', lat: -8.1260, lng: -34.9400 },
-  { nome: 'Polo UR-05', endereco: 'Rua Capitão Vicente - Cohab', distrito: 'VIII', lat: -8.1300, lng: -34.9450 },
-  { nome: 'Polo Vila dos Milagres', endereco: 'Rua Cantora Dalva de Oliveira, S/N - Barro', distrito: 'VIII', lat: -8.0940, lng: -34.9450 }
+  { nome: 'Academia Recife - Polo Hipódromo', endereco: 'Rua Ascenço Ferreira, S/N, Praça do Hipódromo - Hipódromo', lat: -8.0350, lng: -34.8850 },
+  { nome: 'Academia Recife - Polo Ibura', endereco: 'Av. Pernambuco, S/N, Praça Maria Sampaio Lucena - Cohab', lat: -8.1260, lng: -34.9400 },
+  { nome: 'Academia Recife - Polo Torre', endereco: 'Rua José de Holanda, S/N, Praça da Torre - Torre', lat: -8.0590, lng: -34.9105 },
+  { nome: 'Academia Recife - Polo Engenho do Meio', endereco: 'Rua Manuel Alves Deusdara, S/N, Praça Dr. Arnaldo Assunção - Engenho do Meio', lat: -8.0490, lng: -34.9530 },
+  { nome: 'Academia Recife - Polo Coque', endereco: 'Rua Água Doce, S/N, Praça de Joana Bezerra - Ilha Joana Bezerra', lat: -8.0680, lng: -34.8850 },
+  { nome: 'Academia Recife - Polo Jaqueira', endereco: 'Av. Rui Barbosa, S/N, Parque da Jaqueira - Jaqueira', lat: -8.0380, lng: -34.9095 },
+  { nome: 'Academia Recife - Polo Água Fria', endereco: 'Av. Beberibe, S/N, Praça Academia Recife - Água Fria', lat: -8.0150, lng: -34.8870 },
+  { nome: 'Academia Recife - Polo Barro', endereco: 'Rua Padre Diogo Rodrigues, S/N, Praça Academia Recife - Barro', lat: -8.0940, lng: -34.9450 },
+  { nome: 'Academia Recife - Polo Santos Dumont', endereco: 'Rua Almirante Nelson Fernandes, S/N, Centro Esportivo Santos Dumont - Boa Viagem', lat: -8.1200, lng: -34.9000 },
+  { nome: 'Academia Recife - Polo Casa Amarela', endereco: 'Rua Marino de Melo Berenguer, 5673 - Casa Amarela', lat: -8.0196, lng: -34.9283 },
+  { nome: 'Academia Recife - Polo Mustardinha', endereco: 'Rua Neto Campelo Junior, S/N, Praça do ABC - Mustardinha', lat: -8.0725, lng: -34.9230 },
+  { nome: 'Academia Recife - Polo IPSEP', endereco: 'Av. Presidente Kennedy, S/N, Praça Robert Kennedy - IPSEP', lat: -8.1020, lng: -34.9230 },
+  { nome: 'Academia Recife - Polo Lagoa do Araçá', endereco: 'Rua Nova Verona, S/N, Academia Recife Lagoa do Araçá - Imbiribeira', lat: -8.1100, lng: -34.9150 },
+  { nome: 'Academia Recife - Polo Santo Amaro', endereco: 'Av. Gov. Agamenon Magalhães, S/N, Praça Academia Recife - Santo Amaro', lat: -8.0550, lng: -34.8850 },
+  { nome: 'Academia Recife - Polo Santana', endereco: 'Rua Astério Rufino Alves, S/N, Parque Santana - Santana', lat: -8.0130, lng: -34.9320 },
+  { nome: 'Academia Recife - Polo Macaxeira', endereco: 'Av. Norte Miguel Arraes de Alencar, S/N, Parque Urbano da Macaxeira - Macaxeira', lat: -8.0095, lng: -34.9197 },
+  { nome: 'Academia Recife - Polo Boa Viagem', endereco: 'Av. Boa Viagem, S/N, Segundo Jardim - Boa Viagem', lat: -8.1130, lng: -34.8950 },
+  { nome: 'Academia Recife - Polo Várzea', endereco: 'Rua Afonso Ferreira Maia, S/N, Praça da Várzea - Várzea', lat: -8.0415, lng: -34.9565 }
 ];
+
