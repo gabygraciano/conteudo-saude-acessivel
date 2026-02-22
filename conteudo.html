@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="description" content="Conteúdo educacional em saúde acessível." />
+    <meta name="theme-color" content="#1B3A5C" />
+    <title>Conteúdo - Saúde Acessível</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+    <!-- Skip Link -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- HEADER -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <div class="header__logo" aria-label="Saúde Acessível">
+                <span class="header__logo-icon" aria-hidden="true">❤️</span>
+                <div>
+                    <div class="header__title">Saúde Acessível</div>
+                    <div class="header__subtitle">Conteúdos educacionais em saúde</div>
+                </div>
+            </div>
+
+            <div class="font-controls" role="group" aria-label="Ajustar tamanho da fonte">
+                <span class="font-controls__label">Fonte:</span>
+                <button class="font-controls__btn" id="btn-font-decrease" aria-label="Diminuir tamanho da fonte"
+                    title="Diminuir fonte">A-</button>
+                <button class="font-controls__btn" id="btn-font-increase" aria-label="Aumentar tamanho da fonte"
+                    title="Aumentar fonte">A+</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main" id="conteudo-principal" role="main">
+        <!-- Loading -->
+        <div class="loading" id="loading-state">
+            <div class="loading__spinner" aria-hidden="true"></div>
+            <p class="loading__text">Carregando conteúdo...</p>
+        </div>
+
+        <!-- Content Detail (populated by JS) -->
+        <article class="content-detail" id="content-detail" style="display:none;" aria-label="Detalhe do conteúdo">
+
+            <!-- Header -->
+            <header class="content-detail__header">
+                <div class="content-detail__meta" id="detail-meta"></div>
+                <h1 class="content-detail__title" id="detail-title"></h1>
+            </header>
+
+            <!-- Text Section -->
+            <section class="content-section" id="section-texto" style="display:none;">
+                <div class="content-text" id="detail-texto"></div>
+            </section>
+
+            <!-- Benefit Cards (horizontal scroll) -->
+            <section class="content-section" id="section-benefits" style="display:none;">
+                <h2 class="content-section__title">Por que se movimentar?</h2>
+                <div class="benefits-scroll" id="benefits-scroll"></div>
+            </section>
+
+            <!-- Time Goal -->
+            <section class="content-section" id="section-time-goal" style="display:none;">
+                <div class="time-goal" id="time-goal-card"></div>
+            </section>
+
+            <!-- Activity Tiles -->
+            <section class="content-section" id="section-activities" style="display:none;">
+                <h2 class="content-section__title">Atividades que você pode fazer</h2>
+                <div class="activities-grid" id="activities-grid"></div>
+            </section>
+
+            <!-- Tips -->
+            <section class="content-section" id="section-tips" style="display:none;">
+                <h2 class="content-section__title">Inclua no seu dia a dia</h2>
+                <div class="tips-container" id="tips-container"></div>
+            </section>
+
+            <!-- Caution -->
+            <section class="content-section" id="section-caution" style="display:none;">
+                <div class="caution-alert">
+                    <span class="caution-alert__icon">⚠️</span>
+                    <p class="caution-alert__text" id="caution-text"></p>
+                </div>
+            </section>
+
+            <!-- Audio Section -->
+            <section class="content-section" id="section-audio" style="display:none;">
+                <h2 class="content-section__title">
+                    <span class="content-section__title-icon" aria-hidden="true">🎧</span>
+                    Ouça o conteúdo
+                </h2>
+                <div class="audio-player">
+                    <p class="audio-player__label">Aperte o play para ouvir:</p>
+                    <audio controls preload="metadata" id="detail-audio">
+                        Seu navegador não suporta áudio.
+                    </audio>
+                </div>
+            </section>
+
+            <!-- Video Section (single video - legacy) -->
+            <section class="content-section" id="section-video" style="display:none;">
+                <h2 class="content-section__title">
+                    <span class="content-section__title-icon" aria-hidden="true">🎬</span>
+                    Assista ao vídeo
+                </h2>
+                <div class="video-player" id="detail-video"></div>
+            </section>
+
+            <!-- Video Reels Section (multiple videos) -->
+            <section class="content-section" id="section-video-reels" style="display:none;">
+                <h2 class="content-section__title">
+                    <span class="content-section__title-icon" aria-hidden="true">📱</span>
+                    Assista os vídeos
+                </h2>
+                <p class="reels-subtitle">Deslize para ver mais vídeos sobre atividade física:</p>
+                <div class="reels-container" id="reels-container">
+                    <div class="reels-viewport" id="reels-viewport"></div>
+                    <button class="reels-nav reels-nav--prev" id="reels-prev" aria-label="Vídeo anterior">‹</button>
+                    <button class="reels-nav reels-nav--next" id="reels-next" aria-label="Próximo vídeo">›</button>
+                    <div class="reels-indicators" id="reels-indicators"></div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="content-section" id="section-cta" style="display:none;">
+                <div class="cta-card" id="cta-card"></div>
+            </section>
+
+            <!-- Map Section -->
+            <section class="content-section" id="section-mapa" style="display:none;">
+                <h2 class="content-section__title">
+                    <span class="content-section__title-icon" aria-hidden="true">📍</span>
+                    Academias da Cidade perto de você
+                </h2>
+                <p class="map-subtitle">Toque no botão abaixo para encontrar a academia mais próxima:</p>
+                <button class="map-locate-btn" id="btn-locate" aria-label="Usar minha localização">
+                    📍 Usar minha localização
+                </button>
+                <div class="map-container" id="map-container"></div>
+                <div class="map-list" id="map-list"></div>
+            </section>
+
+            <!-- Image Section -->
+            <section class="content-section" id="section-imagem" style="display:none;">
+                <h2 class="content-section__title">
+                    <span class="content-section__title-icon" aria-hidden="true">🖼️</span>
+                    Veja a imagem
+                </h2>
+                <div class="image-gallery" id="detail-imagem"></div>
+            </section>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <p class="footer__text">
+            Conteúdos baseados em materiais oficiais do
+            <a href="https://www.gov.br/saude" target="_blank" rel="noopener noreferrer">Ministério da Saúde</a>.<br />
+            Este material é educativo e não substitui orientação médica.
+        </p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="module" src="/js/conteudo.js"></script>
+</body>
+
+</html>
