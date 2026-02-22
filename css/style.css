@@ -857,10 +857,14 @@ html.font-size-xlarge {
   display: flex;
   gap: var(--space-md);
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: var(--space-xs) 0 var(--space-md);
+  touch-action: pan-x;
+  padding: var(--space-xs) var(--space-sm) var(--space-md);
   scrollbar-width: none;
+  /* Show a peek of the next card to hint that it scrolls */
+  margin-right: -var(--space-lg);
 }
 
 .benefits-scroll::-webkit-scrollbar {

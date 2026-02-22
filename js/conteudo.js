@@ -365,33 +365,14 @@ function initMap() {
                         .addTo(map).bindPopup('<strong>Você está aqui!</strong>').openPopup();
                 }
 
-                const withDistance = markers.map(({ marker, academia }) => {
+                // Zoom to user and open nearest academy
+                const nearest = markers.map(({ marker, academia }) => {
                     const dist = calculateDistance(userLat, userLng, academia.lat, academia.lng);
                     return { marker, academia, dist };
-                }).sort((a, b) => a.dist - b.dist);
-
-                const listEl = document.getElementById('map-list');
-                listEl.innerHTML = '<h3 class="map-list__title">Academias mais próximas:</h3>';
-
-                withDistance.slice(0, 5).forEach((item, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'map-list__item';
-                    card.innerHTML = `
-            <div class="map-list__rank">${index + 1}º</div>
-            <div class="map-list__info">
-              <strong class="map-list__name">${item.academia.nome}</strong>
-              <span class="map-list__address">${item.academia.endereco}</span>
-              <span class="map-list__distance">~${item.dist.toFixed(1)} km</span>
-            </div>
-          `;
-                    card.addEventListener('click', () => {
-                        map.setView([item.academia.lat, item.academia.lng], 16);
-                        item.marker.openPopup();
-                    });
-                    listEl.appendChild(card);
-                });
+                }).sort((a, b) => a.dist - b.dist)[0];
 
                 map.setView([userLat, userLng], 14);
+                if (nearest) nearest.marker.openPopup();
                 locateBtn.textContent = '📍 Atualizar localização';
                 locateBtn.disabled = false;
             },
