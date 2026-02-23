@@ -270,8 +270,8 @@ const MOCK_DATA = [
       descricao: 'A Secretaria de Saúde oferece consultas com nutricionistas para ajudar no controle da sua saúde, <strong>peça o encaminhamento.</strong>',
       link_url: 'https://conecta.recife.pe.gov.br/servico/502'
     },
-    imagem_url: 'img/alimentacao-saudavel.png',
-    imagem_legenda: 'Prato colorido com alimentos saudáveis in natura.',
+    imagem_url: '',
+    imagem_legenda: '',
     tags: 'alimentacao, nutricao, comida, dieta, frutas, legumes, receita'
   }
 ];
