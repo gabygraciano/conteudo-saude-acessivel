@@ -71,8 +71,8 @@ const MOCK_DATA = [
   },
   {
     id: 'alimentacao-saudavel',
-    categoria: 'geral',
-    titulo: 'Comida de verdade faz bem pra tudo!',
+    categoria: 'alimentação',
+    titulo: 'Comida de verdade: o segredo para uma vida saudável',
     resumo: 'Descubra como escolhas simples na alimentação podem trazer mais energia e saúde para o seu dia a dia.',
     conteudo_texto: `
       <p style="margin-bottom: 24px;">Controlar a saúde começa no prato, mas não precisa ser complicado.</p>

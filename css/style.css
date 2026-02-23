@@ -444,6 +444,16 @@ select:focus-visible,
   border: 1px solid var(--color-diabetes-border);
 }
 
+.content-card__badge--alimentação {
+  background: transparent;
+  color: #0056b3;
+  /* Um tom de azul próximo ao da logo */
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+}
+
 .content-card__badge--geral {
   background: var(--color-geral-bg);
   color: var(--color-geral);
@@ -515,6 +525,15 @@ select:focus-visible,
 
 .content-detail__header {
   margin-bottom: var(--space-xl);
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xl);
+  display: block;
 }
 
 .content-detail__title {

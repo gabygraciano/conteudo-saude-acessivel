@@ -90,9 +90,9 @@ async function loadConteudo() {
             heroEl.style.display = 'block';
         }
 
-        // Benefit cards (carrossel horizontal)
+        // Benefit Cards
         if (conteudo.benefit_cards) {
-            initBenefitCards(conteudo.benefit_cards);
+            initBenefitCards(conteudo.benefit_cards, id);
         }
 
         // Time goal
@@ -145,10 +145,21 @@ async function loadConteudo() {
 }
 
 // ===== BENEFIT CARDS (grid mode) =====
-function initBenefitCards(cards) {
+function initBenefitCards(cards, id) {
     const section = document.getElementById('section-benefits');
     if (!section) return;
     section.style.display = 'block';
+
+    const titleEl = section.querySelector('.content-section__title');
+    if (titleEl) {
+        if (id === 'atividade-fisica') {
+            titleEl.textContent = 'Por que se movimentar?';
+        } else if (id === 'alimentacao-saudavel') {
+            titleEl.textContent = 'Benefícios para sua saúde';
+        } else {
+            titleEl.textContent = 'Benefícios';
+        }
+    }
 
     const container = document.getElementById('benefits-scroll');
     container.className = 'benefits-grid-new';
@@ -466,9 +477,10 @@ function getCategoryLabel(categoria) {
     const labels = {
         hipertensao: { icon: '<i class="ph ph-heart"></i>', text: 'Hipertensão' },
         diabetes: { icon: '<i class="ph ph-drop"></i>', text: 'Diabetes' },
-        geral: { icon: '<i class="ph ph-leaf"></i>', text: 'Saúde Geral' }
+        geral: { icon: '<i class="ph ph-leaf"></i>', text: 'Saúde Geral' },
+        alimentação: { icon: '<i class="ph ph-carrot"></i>', text: 'Alimentação' }
     };
-    return labels[categoria] || { icon: '<i class="ph ph-clipboard-text"></i>', text: categoria };
+    return labels[categoria] || { icon: '<i class="ph ph-star"></i>', text: 'Conteúdo' };
 }
 
 function extractYouTubeId(url) {
