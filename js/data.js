@@ -229,6 +229,58 @@ const MOCK_DATA = [
     imagem_url: '',
     imagem_legenda: '',
     tags: 'exercicio, caminhada, atividade, movimento, academia da cidade'
+  },
+  {
+    id: 'alimentacao-saudavel',
+    categoria: 'geral',
+    titulo: 'Comida de verdade faz bem pra tudo!',
+    resumo: 'Descubra como escolhas simples na alimentação podem trazer mais energia e saúde para o seu dia a dia.',
+    conteudo_texto: `
+      <p>A base de uma alimentação saudável são os alimentos <strong>in natura</strong> ou minimamente processados. Arroz, feijão, carnes, legumes e frutas são os verdadeiros heróis do nosso prato!</p>
+      
+      <div class="reels-video-wrapper" style="margin: 32px 0;">
+        <iframe src="https://www.youtube.com/embed/Ng7oA2M4f7o?rel=0&modestbranding=1" title="Dicas de alimentação saudável" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <p><strong>Evite os ultraprocessados!</strong> Sabe aqueles salgadinhos de pacote, biscoitos recheados e refrigerantes? Eles enganam a fome, mas não nutrem o corpo e podem piorar a pressão e a glicose. Descasque mais e desembale menos!</p>
+
+      <div class="reels-video-wrapper" style="margin: 32px 0;">
+        <iframe src="https://www.youtube.com/embed/0yFG6EDhXq8?rel=0&modestbranding=1" title="Alimentos ultraprocessados" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <h3 style="color: var(--color-primary); margin-top: 32px; margin-bottom: 16px;">Exemplos Práticos para o seu Dia a Dia</h3>
+      <p>O <em>Guia Alimentar da População Brasileira</em> sugere refeições simples, baratas e nutritivas:</p>
+      <ul style="margin-bottom: 32px; padding-left: 20px;">
+        <li style="margin-bottom: 12px;"><strong>Café da manhã:</strong> Café com leite, tapioca (ou cuscuz) e uma banana. Simples e dá energia!</li>
+        <li style="margin-bottom: 12px;"><strong>Almoço:</strong> O bom e velho arroz com feijão, acompanhado de uma porção de carne (como frango assado) e uma salada colorida (tomate, beterraba ou couve).</li>
+        <li style="margin-bottom: 12px;"><strong>Jantar:</strong> Uma sopa quente de legumes ou um prato leve com arroz, feijão, ovo e salada.</li>
+      </ul>
+
+      <div class="reels-video-wrapper" style="margin: 32px 0;">
+        <iframe src="https://www.youtube.com/embed/vaEbcYIkrBc?rel=0&modestbranding=1" title="Comer com atenção e em companhia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      
+      <p><strong>Lembre-se:</strong> o momento da refeição importa. Coma com calma, mastigue bem e, sempre que puder, faça suas refeições em boa companhia!</p>
+    `,
+    benefit_cards: [
+      { title: 'Mais energia e disposição para o dia a dia.' },
+      { title: 'Melhora no funcionamento do intestino.' },
+      { title: 'Ajuda a controlar peso e o açúcar.' },
+      { title: 'Coração forte e pressão sob controle.' }
+    ],
+    time_goal: null,
+    activities: null,
+    caution: 'Se você tem restrições alimentares específicas (como intolerância a glúten ou alergias), procure a orientação de um nutricionista no posto de saúde mais próximo.',
+    videos: [],
+    cta: {
+      titulo: 'Nutrição no SUS',
+      subtitulo: 'Apoio gratuito para alimentação!',
+      horario: 'Seg a sex: 8h às 17h',
+      descricao: 'Procure a unidade de saúde mais próxima para orientações nutricionais e acompanhamento de saúde gratuito.'
+    },
+    imagem_url: 'img/alimentacao-saudavel.png',
+    imagem_legenda: 'Prato colorido com alimentos saudáveis in natura.',
+    tags: 'alimentacao, nutricao, comida, dieta, frutas, legumes, receita'
   }
 ];
 
