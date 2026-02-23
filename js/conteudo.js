@@ -60,6 +60,21 @@ async function loadConteudo() {
         // Título
         document.getElementById('detail-title').textContent = conteudo.titulo;
 
+        // Reset all optional sections to hidden first
+        document.getElementById('section-texto').style.display = 'none';
+        document.getElementById('section-divider-texto').style.display = 'none';
+        document.getElementById('hero-image').style.display = 'none';
+
+        const optionalSections = [
+            'section-benefits', 'section-time-goal', 'section-caution',
+            'section-avoid', 'section-video-reels', 'section-activities',
+            'section-cta-map', 'section-cta-link', 'section-imagem'
+        ];
+        optionalSections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+
         // Texto introdutório (breve)
         if (conteudo.conteudo_texto) {
             document.getElementById('section-texto').style.display = 'block';
@@ -87,8 +102,13 @@ async function loadConteudo() {
             initCaution(conteudo.caution);
         }
 
+        // Avoid Cards (O que evitar)
+        if (conteudo.avoid_cards) {
+            initAvoidCards(conteudo.avoid_cards);
+        }
+
         // Video Reels
-        if (conteudo.videos && conteudo.videos.length > 0) {
+        if (conteudo.videos && conteudo.videos.urls && conteudo.videos.urls.length > 0) {
             initVideoReels(conteudo.videos);
         }
 
@@ -99,7 +119,11 @@ async function loadConteudo() {
 
         // CTA + Mapa
         if (conteudo.cta) {
-            initCTAMap(conteudo.cta);
+            if (conteudo.cta.link_only) {
+                initCTALink(conteudo.cta);
+            } else {
+                initCTAMap(conteudo.cta);
+            }
         }
 
         // Imagem
@@ -157,6 +181,22 @@ function initTimeGoal(goal) {
   `;
 }
 
+// ===== AVOID CARDS (O que evitar) =====
+function initAvoidCards(cards) {
+    const section = document.getElementById('section-avoid');
+    if (!section) return;
+    section.style.display = 'block';
+
+    const grid = document.getElementById('avoid-grid');
+    grid.innerHTML = '';
+    cards.forEach(cardText => {
+        const el = document.createElement('div');
+        el.className = 'avoid-card';
+        el.innerHTML = `<span>${cardText}</span>`;
+        grid.appendChild(el);
+    });
+}
+
 // ===== ACTIVITY TILES (grid) =====
 function initActivities(activities) {
     const section = document.getElementById('section-activities');
@@ -178,15 +218,27 @@ function initActivities(activities) {
 }
 
 // ===== VIDEO REELS =====
-function initVideoReels(videos) {
+function initVideoReels(videoData) {
     const section = document.getElementById('section-video-reels');
     if (!section) return;
     section.style.display = 'block';
 
+    if (videoData.title) {
+        const titleEl = document.getElementById('reels-title');
+        titleEl.innerHTML = `<i class="ph ph-video-camera" style="color: #e53935; margin-right: 8px;" aria-hidden="true"></i> ${videoData.title}`;
+        titleEl.style.display = 'block';
+    }
+
+    if (videoData.post_text) {
+        const postEl = document.getElementById('reels-post-text');
+        postEl.innerHTML = videoData.post_text;
+        postEl.style.display = 'block';
+    }
+
+    const videos = videoData.urls || [];
     const viewport = document.getElementById('reels-viewport');
-    viewport.innerHTML = '';
     const indicators = document.getElementById('reels-indicators');
-    indicators.innerHTML = '';
+    viewport.innerHTML = '';
     const prevBtn = document.getElementById('reels-prev');
     const nextBtn = document.getElementById('reels-next');
 
@@ -296,6 +348,21 @@ function renderSingleVideo(conteudo) {
     }
 }
 
+
+// ===== CTA (Link Only Variant) =====
+function initCTALink(cta) {
+    const section = document.getElementById('section-cta-link');
+    if (!section) return;
+    section.style.display = 'block';
+
+    document.getElementById('cta-link-title').textContent = cta.titulo;
+    document.getElementById('cta-link-desc').innerHTML = cta.descricao;
+
+    const btn = document.getElementById('cta-link-btn');
+    if (cta.link_url) {
+        btn.href = cta.link_url;
+    }
+}
 
 // ===== CTA + MAPA =====
 function initCTAMap(cta) {
