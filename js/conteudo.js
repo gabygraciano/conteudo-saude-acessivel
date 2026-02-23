@@ -87,6 +87,16 @@ async function loadConteudo() {
             initCaution(conteudo.caution);
         }
 
+        // Video Reels
+        if (conteudo.videos && conteudo.videos.length > 0) {
+            initVideoReels(conteudo.videos);
+        }
+
+        // Activity tiles
+        if (conteudo.activities) {
+            initActivities(conteudo.activities);
+        }
+
         // CTA + Mapa
         if (conteudo.cta) {
             initCTAMap(conteudo.cta);
@@ -154,6 +164,7 @@ function initActivities(activities) {
     section.style.display = 'block';
 
     const grid = document.getElementById('activities-grid');
+    grid.innerHTML = '';
     activities.forEach(act => {
         const el = document.createElement('div');
         el.className = 'activity-tile';
@@ -166,59 +177,16 @@ function initActivities(activities) {
     });
 }
 
-// ===== TIPS (horizontal pills) =====
-function initTips(tips) {
-    const section = document.getElementById('section-tips');
-    if (!section) return;
-    section.style.display = 'block';
-
-    const container = document.getElementById('tips-container');
-    tips.forEach(tip => {
-        const el = document.createElement('div');
-        el.className = 'tip-pill';
-        el.textContent = tip;
-        container.appendChild(el);
-    });
-}
-
-// ===== CAUTION ALERT =====
-function initCaution(text) {
-    const section = document.getElementById('section-caution');
-    if (!section) return;
-    section.style.display = 'block';
-
-    // Highlight text segments to match design: Fale com seu médico... bold
-    let formattedText = text;
-    if (text.includes('antes de começar.')) {
-        formattedText = text.replace('Fale com seu médico antes de começar.', '<strong>Fale com seu médico antes de começar.</strong>');
-    }
-
-    document.getElementById('caution-text').innerHTML = formattedText.replace(/\n/g, '<br>');
-}
-
-// ===== SINGLE VIDEO =====
-function renderSingleVideo(conteudo) {
-    const sectionVideo = document.getElementById('section-video');
-    sectionVideo.style.display = 'block';
-    const videoContainer = document.getElementById('detail-video');
-
-    const youtubeId = extractYouTubeId(conteudo.video_url);
-    if (youtubeId) {
-        videoContainer.innerHTML = `
-      <iframe src="https://www.youtube.com/embed/${youtubeId}" title="${conteudo.titulo} - Vídeo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    `;
-    }
-}
-
 // ===== VIDEO REELS =====
 function initVideoReels(videos) {
     const section = document.getElementById('section-video-reels');
+    if (!section) return;
     section.style.display = 'block';
 
     const viewport = document.getElementById('reels-viewport');
+    viewport.innerHTML = '';
     const indicators = document.getElementById('reels-indicators');
+    indicators.innerHTML = '';
     const prevBtn = document.getElementById('reels-prev');
     const nextBtn = document.getElementById('reels-next');
 
@@ -249,6 +217,7 @@ function initVideoReels(videos) {
     function goToSlide(index) {
         const slides = viewport.querySelectorAll('.reels-slide');
         const dots = indicators.querySelectorAll('.reels-dot');
+        if (!slides[currentIndex]) return;
         slides[currentIndex].classList.remove('reels-slide--active');
         dots[currentIndex].classList.remove('reels-dot--active');
         currentIndex = index;
@@ -280,6 +249,53 @@ function initVideoReels(videos) {
 
     prevBtn.style.opacity = '0.3';
 }
+
+// ===== TIPS (horizontal pills) =====
+function initTips(tips) {
+    const section = document.getElementById('section-tips');
+    if (!section) return;
+    section.style.display = 'block';
+
+    const container = document.getElementById('tips-container');
+    tips.forEach(tip => {
+        const el = document.createElement('div');
+        el.className = 'tip-pill';
+        el.textContent = tip;
+        container.appendChild(el);
+    });
+}
+
+// ===== CAUTION ALERT =====
+function initCaution(text) {
+    const el = document.getElementById('caution-text');
+    if (!el) return;
+    el.style.display = 'block';
+
+    // Highlight text segments to match design: Fale com seu médico... bold
+    let formattedText = text;
+    if (text.includes('antes de começar.')) {
+        formattedText = text.replace('Fale com seu médico antes de começar.', '<strong>Fale com seu médico antes de começar.</strong>');
+    }
+
+    el.innerHTML = formattedText.replace(/\n/g, '<br>');
+}
+
+// ===== SINGLE VIDEO =====
+function renderSingleVideo(conteudo) {
+    const sectionVideo = document.getElementById('section-video');
+    sectionVideo.style.display = 'block';
+    const videoContainer = document.getElementById('detail-video');
+
+    const youtubeId = extractYouTubeId(conteudo.video_url);
+    if (youtubeId) {
+        videoContainer.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${youtubeId}" title="${conteudo.titulo} - Vídeo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+    `;
+    }
+}
+
 
 // ===== CTA + MAPA =====
 function initCTAMap(cta) {

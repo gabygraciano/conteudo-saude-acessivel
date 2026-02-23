@@ -205,7 +205,21 @@ const MOCK_DATA = [
       title: 'A meta ideal: 30 minutos por dia, 5 vezes por semana.',
       tip: 'Dica: Você pode dividir em 3 sessões de 10 minutinhos!'
     },
+    activities: [
+      { icon: '<i class="ph ph-sneaker"></i>', name: 'Caminhada', tip: 'Comece com 10 min e aumente aos poucos' },
+      { icon: '<i class="ph ph-music-notes"></i>', name: 'Dança', tip: 'Forró, samba, qualquer ritmo vale!' },
+      { icon: '<i class="ph ph-swimming-pool"></i>', name: 'Hidroginástica', tip: 'Ideal para dores nas articulações' },
+      { icon: '<i class="ph ph-person-arms-spread"></i>', name: 'Alongamento', tip: 'Melhora flexibilidade e relaxa' },
+      { icon: '<i class="ph ph-bicycle"></i>', name: 'Pedalar', tip: 'Bom pro coração e como transporte' },
+      { icon: '<i class="ph ph-volleyball"></i>', name: 'Esportes', tip: 'Futebol, vôlei, bocha com amigos' }
+    ],
     caution: 'Fale com seu médico antes de começar.\nBeba água, use roupas leves e prefira horários frescos. Se sentir tontura ou dor no peito, pare e procure ajuda.',
+    videos: [
+      'https://www.youtube.com/watch?v=kQGmkSrceN0',
+      'https://www.youtube.com/watch?v=p7CPYGYaQu4',
+      'https://www.youtube.com/watch?v=KbxiB1mOoyM',
+      'https://www.youtube.com/watch?v=1bZFKLHezc4'
+    ],
     cta: {
       titulo: 'Academia da Cidade',
       subtitulo: 'Exercício gratuito perto de você!',

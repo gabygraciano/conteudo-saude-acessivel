@@ -75,9 +75,22 @@
                 <div class="time-goal" id="time-goal-card"></div>
             </section>
 
-            <!-- Caution -->
-            <section class="content-section" id="section-caution" style="display:none;">
-                <div class="caution-alert" id="caution-text"></div>
+            <!-- Caution + Video Reels Section (combined) -->
+            <section class="content-section" id="section-video-reels" style="display:none;">
+                <div class="caution-alert" id="caution-text" style="margin-bottom: var(--space-md);"></div>
+                <div class="reels-container" id="reels-container">
+                    <div class="reels-viewport" id="reels-viewport"></div>
+                    <button class="reels-nav reels-nav--prev" id="reels-prev" aria-label="Vídeo anterior">‹</button>
+                    <button class="reels-nav reels-nav--next" id="reels-next" aria-label="Próximo vídeo">›</button>
+                    <div class="reels-indicators" id="reels-indicators"></div>
+                </div>
+            </section>
+
+            <!-- Activity Tiles -->
+            <section class="content-section" id="section-activities" style="display:none;">
+                <h2 class="content-section__title"><i class="ph ph-person-simple-run content-section__title-icon"
+                        aria-hidden="true"></i> Atividades que você pode fazer</h2>
+                <div class="activities-grid" id="activities-grid"></div>
             </section>
 
             <!-- Combined CTA & Map Section -->
