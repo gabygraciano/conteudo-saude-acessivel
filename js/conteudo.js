@@ -46,7 +46,11 @@ async function loadConteudo() {
 
         // Badge de categoria
         const metaEl = document.getElementById('detail-meta');
-        const categoryLabel = getCategoryLabel(conteudo.categoria);
+        let categoryLabel = getCategoryLabel(conteudo.categoria);
+        if (id === 'atividade-fisica') {
+            categoryLabel = { icon: '<i class="ph ph-person-simple-walk"></i>', text: 'Atividade Física' };
+        }
+
         metaEl.innerHTML = `
       <span class="content-card__badge content-card__badge--${conteudo.categoria}">
         ${categoryLabel.icon} ${categoryLabel.text}
@@ -78,35 +82,9 @@ async function loadConteudo() {
             initTimeGoal(conteudo.time_goal);
         }
 
-        // Activity tiles
-        if (conteudo.activities) {
-            initActivities(conteudo.activities);
-        }
-
-        // Tips (compact)
-        if (conteudo.tips) {
-            initTips(conteudo.tips);
-        }
-
         // Caution alert
         if (conteudo.caution) {
             initCaution(conteudo.caution);
-        }
-
-        // Áudio
-        if (conteudo.audio_url) {
-            document.getElementById('section-audio').style.display = 'block';
-            document.getElementById('detail-audio').src = conteudo.audio_url;
-        }
-
-        // Vídeo único (legacy)
-        if (conteudo.video_url) {
-            renderSingleVideo(conteudo);
-        }
-
-        // Video Reels
-        if (conteudo.videos && conteudo.videos.length > 0) {
-            initVideoReels(conteudo.videos);
         }
 
         // CTA + Mapa
@@ -157,7 +135,7 @@ function initTimeGoal(goal) {
     if (!section.querySelector('.content-section__title')) {
         const heading = document.createElement('h2');
         heading.className = 'content-section__title flex-title';
-        heading.innerHTML = `<span class="content-section__title-icon" aria-hidden="true">⏰</span> Quanto tempo praticar?`;
+        heading.innerHTML = `<i class="ph ph-clock content-section__title-icon" aria-hidden="true"></i> Quanto tempo praticar?`;
         section.insertBefore(heading, section.firstChild);
     }
 
@@ -319,7 +297,7 @@ function initCTAMap(cta) {
 
     const academiaIcon = L.divIcon({
         className: 'academia-marker',
-        html: '<div class="academia-marker__pin">🏋️</div>',
+        html: '<div class="academia-marker__pin"><i class="ph-bold ph-barbell"></i></div>',
         iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -36]
     });
 
@@ -357,7 +335,7 @@ function initCTAMap(cta) {
                 } else {
                     const userIcon = L.divIcon({
                         className: 'user-marker',
-                        html: '<div class="user-marker__pin">📍</div>',
+                        html: '<div class="user-marker__pin"><i class="ph-bold ph-map-pin"></i></div>',
                         iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -36]
                     });
                     userMarker = L.marker([userLat, userLng], { icon: userIcon })
@@ -372,12 +350,12 @@ function initCTAMap(cta) {
 
                 map.setView([userLat, userLng], 14);
                 if (nearest) nearest.marker.openPopup();
-                locateBtn.textContent = '📍 Encontrar academia mais próxima';
+                locateBtn.innerHTML = '<i class="ph ph-map-pin"></i> Encontrar academia mais próxima';
                 locateBtn.disabled = false;
             },
             () => {
                 alert('Não foi possível obter sua localização. Verifique as permissões.');
-                locateBtn.textContent = '📍 Encontrar academia mais próxima';
+                locateBtn.innerHTML = '<i class="ph ph-map-pin"></i> Encontrar academia mais próxima';
                 locateBtn.disabled = false;
             },
             { enableHighAccuracy: true, timeout: 10000 }
@@ -391,7 +369,7 @@ function initCTAMap(cta) {
 function showError(container, title, message) {
     container.innerHTML = `
     <div class="error-state">
-      <div class="error-state__icon">😔</div>
+      <div class="error-state__icon"><i class="ph ph-smiley-sad"></i></div>
       <h2 class="error-state__title">${title}</h2>
       <p class="error-state__message">${message}</p>
     </div>
@@ -400,11 +378,11 @@ function showError(container, title, message) {
 
 function getCategoryLabel(categoria) {
     const labels = {
-        hipertensao: { icon: '❤️', text: 'Hipertensão' },
-        diabetes: { icon: '🩸', text: 'Diabetes' },
-        geral: { icon: '🌿', text: 'Saúde Geral' }
+        hipertensao: { icon: '<i class="ph ph-heart"></i>', text: 'Hipertensão' },
+        diabetes: { icon: '<i class="ph ph-drop"></i>', text: 'Diabetes' },
+        geral: { icon: '<i class="ph ph-leaf"></i>', text: 'Saúde Geral' }
     };
-    return labels[categoria] || { icon: '📋', text: categoria };
+    return labels[categoria] || { icon: '<i class="ph ph-clipboard-text"></i>', text: categoria };
 }
 
 function extractYouTubeId(url) {

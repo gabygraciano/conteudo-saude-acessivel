@@ -205,35 +205,12 @@ const MOCK_DATA = [
       title: 'A meta ideal: 30 minutos por dia, 5 vezes por semana.',
       tip: 'Dica: Você pode dividir em 3 sessões de 10 minutinhos!'
     },
-    activities: [
-      { icon: '🚶', name: 'Caminhada', tip: 'Comece com 10 min e aumente aos poucos' },
-      { icon: '💃', name: 'Dança', tip: 'Forró, samba, qualquer ritmo vale!' },
-      { icon: '🏊', name: 'Hidroginástica', tip: 'Ideal para dores nas articulações' },
-      { icon: '🧘', name: 'Alongamento', tip: 'Melhora flexibilidade e relaxa' },
-      { icon: '🚴', name: 'Pedalar', tip: 'Bom pro coração e como transporte' },
-      { icon: '🏐', name: 'Esportes', tip: 'Futebol, vôlei, bocha com amigos' }
-    ],
-    tips: [
-      'Vá a pé quando possível',
-      'Suba escadas ao invés do elevador',
-      'Faça tarefas da casa: varrer, jardinar',
-      'Passeie com o cachorro',
-      'Brinque com as crianças ou netos'
-    ],
     caution: 'Fale com seu médico antes de começar.\nBeba água, use roupas leves e prefira horários frescos. Se sentir tontura ou dor no peito, pare e procure ajuda.',
-    audio_url: '',
-    video_url: '',
-    videos: [
-      'https://www.youtube.com/watch?v=kQGmkSrceN0',
-      'https://www.youtube.com/watch?v=p7CPYGYaQu4',
-      'https://www.youtube.com/watch?v=KbxiB1mOoyM',
-      'https://www.youtube.com/watch?v=1bZFKLHezc4'
-    ],
     cta: {
       titulo: 'Academia da Cidade',
       subtitulo: 'Exercício gratuito perto de você!',
       horario: 'Seg a sex: 5h30–11h30 e 14h–20h',
-      descricao: 'Mais de 40 polos em Recife com profissionais de Educação Física. Ginástica, dança, caminhada e mais!'
+      descricao: 'Equipamentos e instrutores profissionais para você cuidar do corpo sem pagar nada de segunda a sábado.'
     },
     imagem_url: '',
     imagem_legenda: '',
