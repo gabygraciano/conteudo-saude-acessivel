@@ -59,7 +59,13 @@ async function loadConteudo() {
         // Texto introdutório (breve)
         if (conteudo.conteudo_texto) {
             document.getElementById('section-texto').style.display = 'block';
+            document.getElementById('section-divider-texto').style.display = 'block';
             document.getElementById('detail-texto').innerHTML = conteudo.conteudo_texto;
+        }
+
+        // Hero Image
+        if (id === 'atividade-fisica') {
+            document.getElementById('hero-image').style.display = 'block';
         }
 
         // Benefit cards (carrossel horizontal)
@@ -103,14 +109,9 @@ async function loadConteudo() {
             initVideoReels(conteudo.videos);
         }
 
-        // CTA
+        // CTA + Mapa
         if (conteudo.cta) {
-            initCTA(conteudo.cta);
-        }
-
-        // Mapa
-        if (conteudo.cta) {
-            initMap();
+            initCTAMap(conteudo.cta);
         }
 
         // Imagem
@@ -128,35 +129,43 @@ async function loadConteudo() {
     }
 }
 
-// ===== BENEFIT CARDS (horizontal scroll) =====
+// ===== BENEFIT CARDS (grid mode) =====
 function initBenefitCards(cards) {
     const section = document.getElementById('section-benefits');
     if (!section) return;
     section.style.display = 'block';
 
     const container = document.getElementById('benefits-scroll');
+    container.className = 'benefits-grid-new';
+    container.innerHTML = '';
     cards.forEach(card => {
         const el = document.createElement('div');
-        el.className = 'benefit-card';
+        el.className = 'benefit-card-new';
         el.innerHTML = `
-      <span class="benefit-card__icon">${card.icon}</span>
-      <strong class="benefit-card__title">${card.title}</strong>
-      <span class="benefit-card__desc">${card.desc}</span>
+      <strong class="benefit-card-new__title">${card.title}</strong>
     `;
         container.appendChild(el);
     });
 }
 
-// ===== TIME GOAL (big number) =====
+// ===== TIME GOAL =====
 function initTimeGoal(goal) {
     const section = document.getElementById('section-time-goal');
     if (!section) return;
     section.style.display = 'block';
 
-    document.getElementById('time-goal-card').innerHTML = `
-    <div class="time-goal__number">${goal.number}</div>
-    <div class="time-goal__unit">${goal.unit}</div>
-    <div class="time-goal__detail">${goal.detail}</div>
+    if (!section.querySelector('.content-section__title')) {
+        const heading = document.createElement('h2');
+        heading.className = 'content-section__title flex-title';
+        heading.innerHTML = `<span class="content-section__title-icon" aria-hidden="true">⏰</span> Quanto tempo praticar?`;
+        section.insertBefore(heading, section.firstChild);
+    }
+
+    const card = document.getElementById('time-goal-card');
+    card.className = 'time-goal-new';
+    card.innerHTML = `
+    <div class="time-goal-new__title">${goal.title.replace('A meta ideal:', '<strong>A meta ideal:</strong>')}</div>
+    <div class="time-goal-new__tip"><strong>${goal.tip}</strong></div>
   `;
 }
 
@@ -200,7 +209,13 @@ function initCaution(text) {
     if (!section) return;
     section.style.display = 'block';
 
-    document.getElementById('caution-text').textContent = text;
+    // Highlight text segments to match design: Fale com seu médico... bold
+    let formattedText = text;
+    if (text.includes('antes de começar.')) {
+        formattedText = text.replace('Fale com seu médico antes de começar.', '<strong>Fale com seu médico antes de começar.</strong>');
+    }
+
+    document.getElementById('caution-text').innerHTML = formattedText.replace(/\n/g, '<br>');
 }
 
 // ===== SINGLE VIDEO =====
@@ -288,28 +303,12 @@ function initVideoReels(videos) {
     prevBtn.style.opacity = '0.3';
 }
 
-// ===== CTA (compact) =====
-function initCTA(cta) {
-    const section = document.getElementById('section-cta');
+// ===== CTA + MAPA =====
+function initCTAMap(cta) {
+    const section = document.getElementById('section-cta-map');
     section.style.display = 'block';
 
-    document.getElementById('cta-card').innerHTML = `
-    <div class="cta-compact">
-      <div class="cta-compact__icon">🏋️</div>
-      <div class="cta-compact__content">
-        <strong class="cta-compact__title">${cta.titulo}</strong>
-        <span class="cta-compact__subtitle">${cta.subtitulo}</span>
-        <span class="cta-compact__detail">${cta.horario}</span>
-        <span class="cta-compact__desc">${cta.descricao}</span>
-      </div>
-    </div>
-  `;
-}
-
-// ===== MAPA =====
-function initMap() {
-    const section = document.getElementById('section-mapa');
-    section.style.display = 'block';
+    document.getElementById('cta-desc-text').textContent = cta.descricao;
 
     const map = L.map('map-container').setView([-8.0578, -34.8829], 12);
 
@@ -335,7 +334,7 @@ function initMap() {
           <span class="map-popup__hours">Seg-sex: 5h30–11h30 / 14h–20h</span>
         </div>
       `);
-        markers.push({ marker, academia });
+        markers.push({ anchorId: academia.nome, marker, academia });
     });
 
     // Geolocation
@@ -373,12 +372,12 @@ function initMap() {
 
                 map.setView([userLat, userLng], 14);
                 if (nearest) nearest.marker.openPopup();
-                locateBtn.textContent = '📍 Atualizar localização';
+                locateBtn.textContent = '📍 Encontrar academia mais próxima';
                 locateBtn.disabled = false;
             },
             () => {
                 alert('Não foi possível obter sua localização. Verifique as permissões.');
-                locateBtn.textContent = '📍 Usar minha localização';
+                locateBtn.textContent = '📍 Encontrar academia mais próxima';
                 locateBtn.disabled = false;
             },
             { enableHighAccuracy: true, timeout: 10000 }

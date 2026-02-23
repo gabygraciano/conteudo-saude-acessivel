@@ -191,22 +191,19 @@ const MOCK_DATA = [
   {
     id: 'atividade-fisica',
     categoria: 'geral',
-    titulo: 'Mexa-se! Atividade física para sua saúde',
+    titulo: 'Pequenos movimentos, grandes ganhos para sua saúde',
     resumo: 'Descubra como se movimentar pode ajudar a controlar a pressão alta e o diabetes.',
-    conteudo_texto: `<p>Movimentar o corpo é um dos melhores remédios para quem vive com <strong>pressão alta</strong> ou <strong>diabetes</strong>.</p>
-<p><strong>Não precisa ser atleta.</strong> Caminhar, dançar, brincar com os netos — tudo conta!</p>`,
+    conteudo_texto: `<p>Movimentar o corpo é um dos melhores remédios para controlar a pressão alta e o diabetes.</p>
+<p><strong>E o melhor: você não precisa ser atleta.</strong> Caminhar, dançar ou brincar com os netos — tudo conta!</p>`,
     benefit_cards: [
-      { icon: '❤️', title: 'Coração forte', desc: 'Baixa a pressão arterial naturalmente' },
-      { icon: '🩸', title: 'Açúcar controlado', desc: 'Seu corpo usa melhor a insulina' },
-      { icon: '😴', title: 'Sono melhor', desc: 'Mais disposição durante o dia' },
-      { icon: '🦴', title: 'Ossos firmes', desc: 'Previne quedas e fraturas' },
-      { icon: '🧠', title: 'Mente ativa', desc: 'Melhora memória e raciocínio' },
-      { icon: '⚖️', title: 'Peso saudável', desc: 'Reduz risco de complicações' }
+      { title: 'Ajuda a baixar a pressão.' },
+      { title: 'Mantém o açúcar controlado' },
+      { title: 'Você dorme melhor e acorda com mais disposição.' },
+      { title: 'Melhora a memória, o raciocínio e o humor.' }
     ],
     time_goal: {
-      number: '30',
-      unit: 'min/dia',
-      detail: '5 dias por semana. Pode dividir em 3 sessões de 10 min!'
+      title: 'A meta ideal: 30 minutos por dia, 5 vezes por semana.',
+      tip: 'Dica: Você pode dividir em 3 sessões de 10 minutinhos!'
     },
     activities: [
       { icon: '🚶', name: 'Caminhada', tip: 'Comece com 10 min e aumente aos poucos' },
@@ -223,7 +220,7 @@ const MOCK_DATA = [
       'Passeie com o cachorro',
       'Brinque com as crianças ou netos'
     ],
-    caution: 'Fale com seu médico antes de começar. Beba água, use roupas leves e prefira horários frescos. Se sentir tontura ou dor no peito, pare e procure ajuda.',
+    caution: 'Fale com seu médico antes de começar.\nBeba água, use roupas leves e prefira horários frescos. Se sentir tontura ou dor no peito, pare e procure ajuda.',
     audio_url: '',
     video_url: '',
     videos: [
