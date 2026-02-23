@@ -10,9 +10,9 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script type="module" crossorigin src="/conteudo-saude-acessivel/assets/conteudo-B8gij3MF.js"></script>
-  <link rel="modulepreload" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-Ckzg3v5W.js">
-  <link rel="stylesheet" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-DvGKSlhc.css">
+  <script type="module" crossorigin src="/conteudo-saude-acessivel/assets/conteudo-CfoKMPa9.js"></script>
+  <link rel="modulepreload" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-BqhvTm0w.js">
+  <link rel="stylesheet" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-lBUvnXyg.css">
 </head>
 
 <body>
@@ -22,12 +22,8 @@
     <!-- HEADER -->
     <header class="header" role="banner">
         <div class="header__inner">
-            <div class="header__logo" aria-label="Saúde Acessível">
-                <span class="header__logo-icon" aria-hidden="true">❤️</span>
-                <div>
-                    <div class="header__title">Saúde Acessível</div>
-                    <div class="header__subtitle">Conteúdos educacionais em saúde</div>
-                </div>
+            <div class="header__logo" aria-label="CUIDA Recife">
+                <img src="/conteudo-saude-acessivel/assets/cuida-recife-BPE8cmGy.png" alt="Logo CUIDA Recife" class="header__logo-img" />
             </div>
 
             <div class="font-controls" role="group" aria-label="Ajustar tamanho da fonte">
@@ -51,6 +47,10 @@
         <!-- Content Detail (populated by JS) -->
         <article class="content-detail" id="content-detail" style="display:none;" aria-label="Detalhe do conteúdo">
 
+            <!-- Hero Image -->
+            <img src="/conteudo-saude-acessivel/assets/atividade-fisica-Dbq_-Ouq.png" alt="Idosa se alongando" class="hero-image" id="hero-image"
+                style="display:none;" />
+
             <!-- Header -->
             <header class="content-detail__header">
                 <div class="content-detail__meta" id="detail-meta"></div>
@@ -61,6 +61,8 @@
             <section class="content-section" id="section-texto" style="display:none;">
                 <div class="content-text" id="detail-texto"></div>
             </section>
+
+            <hr class="section-divider" id="section-divider-texto" style="display:none;" />
 
             <!-- Benefit Cards (horizontal scroll) -->
             <section class="content-section" id="section-benefits" style="display:none;">
@@ -87,10 +89,7 @@
 
             <!-- Caution -->
             <section class="content-section" id="section-caution" style="display:none;">
-                <div class="caution-alert">
-                    <span class="caution-alert__icon">⚠️</span>
-                    <p class="caution-alert__text" id="caution-text"></p>
-                </div>
+                <div class="caution-alert" id="caution-text"></div>
             </section>
 
             <!-- Audio Section -->
@@ -131,23 +130,22 @@
                 </div>
             </section>
 
-            <!-- CTA Section -->
-            <section class="content-section" id="section-cta" style="display:none;">
-                <div class="cta-card" id="cta-card"></div>
-            </section>
+            <!-- Combined CTA & Map Section -->
+            <section class="cta-map-section" id="section-cta-map" style="display:none;">
+                <div class="cta-map-inner">
+                    <div class="cta-header">
+                        <img src="/conteudo-saude-acessivel/assets/academia-recife-DsWgE-vO.png" alt="Logo Academia Recife" class="cta-logo" />
+                        <h2 class="cta-title">Exercício gratuito<br>perto de você!</h2>
+                    </div>
+                    <p class="cta-desc" id="cta-desc-text"></p>
 
-            <!-- Map Section -->
-            <section class="content-section" id="section-mapa" style="display:none;">
-                <h2 class="content-section__title">
-                    <span class="content-section__title-icon" aria-hidden="true">📍</span>
-                    Academias da Cidade perto de você
-                </h2>
-                <p class="map-subtitle">Toque no botão abaixo para encontrar a academia mais próxima:</p>
-                <button class="map-locate-btn" id="btn-locate" aria-label="Usar minha localização">
-                    📍 Usar minha localização
-                </button>
-                <div class="map-container" id="map-container"></div>
-                <div class="map-list" id="map-list"></div>
+                    <button class="map-locate-btn" id="btn-locate" aria-label="Usar minha localização">
+                        📍 Encontrar academia mais próxima
+                    </button>
+                    <div class="map-container" id="map-container"></div>
+
+                    <button class="btn-agende" aria-label="Agende sua aula">Agende!</button>
+                </div>
             </section>
 
             <!-- Image Section -->
