@@ -1,4 +1,4 @@
-import{i as d,f as l}from"./font-controls-BqhvTm0w.js";document.addEventListener("DOMContentLoaded",async()=>{d(),await u(),_()});let a=[],c="todos";async function u(){document.getElementById("content-grid");const t=document.getElementById("loading-state");try{a=await l(),t.style.display="none",i(a)}catch{t.innerHTML=`
+import{i as d,f as l}from"./font-controls-DgWYExDe.js";document.addEventListener("DOMContentLoaded",async()=>{d(),await u(),_()});let a=[],c="todos";async function u(){document.getElementById("content-grid");const t=document.getElementById("loading-state");try{a=await l(),t.style.display="none",i(a)}catch{t.innerHTML=`
       <div class="error-state">
         <div class="error-state__icon">😔</div>
         <h2 class="error-state__title">Ops! Algo deu errado</h2>

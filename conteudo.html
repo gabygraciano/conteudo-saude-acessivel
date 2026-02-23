@@ -10,9 +10,11 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script type="module" crossorigin src="/conteudo-saude-acessivel/assets/conteudo-CfoKMPa9.js"></script>
-  <link rel="modulepreload" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-BqhvTm0w.js">
-  <link rel="stylesheet" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-lBUvnXyg.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script type="module" crossorigin src="/conteudo-saude-acessivel/assets/conteudo-De-4gAIT.js"></script>
+  <link rel="modulepreload" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-DgWYExDe.js">
+  <link rel="stylesheet" crossorigin href="/conteudo-saude-acessivel/assets/font-controls-DIoE9SbN.css">
 </head>
 
 <body>
@@ -75,59 +77,9 @@
                 <div class="time-goal" id="time-goal-card"></div>
             </section>
 
-            <!-- Activity Tiles -->
-            <section class="content-section" id="section-activities" style="display:none;">
-                <h2 class="content-section__title">Atividades que você pode fazer</h2>
-                <div class="activities-grid" id="activities-grid"></div>
-            </section>
-
-            <!-- Tips -->
-            <section class="content-section" id="section-tips" style="display:none;">
-                <h2 class="content-section__title">Inclua no seu dia a dia</h2>
-                <div class="tips-container" id="tips-container"></div>
-            </section>
-
             <!-- Caution -->
             <section class="content-section" id="section-caution" style="display:none;">
                 <div class="caution-alert" id="caution-text"></div>
-            </section>
-
-            <!-- Audio Section -->
-            <section class="content-section" id="section-audio" style="display:none;">
-                <h2 class="content-section__title">
-                    <span class="content-section__title-icon" aria-hidden="true">🎧</span>
-                    Ouça o conteúdo
-                </h2>
-                <div class="audio-player">
-                    <p class="audio-player__label">Aperte o play para ouvir:</p>
-                    <audio controls preload="metadata" id="detail-audio">
-                        Seu navegador não suporta áudio.
-                    </audio>
-                </div>
-            </section>
-
-            <!-- Video Section (single video - legacy) -->
-            <section class="content-section" id="section-video" style="display:none;">
-                <h2 class="content-section__title">
-                    <span class="content-section__title-icon" aria-hidden="true">🎬</span>
-                    Assista ao vídeo
-                </h2>
-                <div class="video-player" id="detail-video"></div>
-            </section>
-
-            <!-- Video Reels Section (multiple videos) -->
-            <section class="content-section" id="section-video-reels" style="display:none;">
-                <h2 class="content-section__title">
-                    <span class="content-section__title-icon" aria-hidden="true">📱</span>
-                    Assista os vídeos
-                </h2>
-                <p class="reels-subtitle">Deslize para ver mais vídeos sobre atividade física:</p>
-                <div class="reels-container" id="reels-container">
-                    <div class="reels-viewport" id="reels-viewport"></div>
-                    <button class="reels-nav reels-nav--prev" id="reels-prev" aria-label="Vídeo anterior">‹</button>
-                    <button class="reels-nav reels-nav--next" id="reels-next" aria-label="Próximo vídeo">›</button>
-                    <div class="reels-indicators" id="reels-indicators"></div>
-                </div>
             </section>
 
             <!-- Combined CTA & Map Section -->
@@ -135,16 +87,17 @@
                 <div class="cta-map-inner">
                     <div class="cta-header">
                         <img src="/conteudo-saude-acessivel/assets/academia-recife-DsWgE-vO.png" alt="Logo Academia Recife" class="cta-logo" />
-                        <h2 class="cta-title">Exercício gratuito<br>perto de você!</h2>
+                        <h2 class="cta-title">Exercício gratuito perto de você!</h2>
                     </div>
                     <p class="cta-desc" id="cta-desc-text"></p>
 
                     <button class="map-locate-btn" id="btn-locate" aria-label="Usar minha localização">
-                        📍 Encontrar academia mais próxima
+                        <i class="ph ph-map-pin"></i> Encontrar academia mais próxima
                     </button>
                     <div class="map-container" id="map-container"></div>
 
-                    <button class="btn-agende" aria-label="Agende sua aula">Agende!</button>
+                    <a href="https://conecta.recife.pe.gov.br/servico/858" target="_blank" class="btn-agende"
+                        aria-label="Agende sua aula">Agende!</a>
                 </div>
             </section>
 
