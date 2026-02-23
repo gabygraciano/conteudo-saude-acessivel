@@ -226,7 +226,7 @@ select:focus-visible,
 .font-controls__label {
   font-size: 0.65rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-right: 4px;
 }
 
