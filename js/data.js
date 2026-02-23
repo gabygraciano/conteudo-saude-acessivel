@@ -230,7 +230,8 @@ const MOCK_DATA = [
     },
     imagem_url: '',
     imagem_legenda: '',
-    tags: 'exercicio, caminhada, atividade, movimento, academia da cidade'
+    tags: 'exercicio, caminhada, atividade, movimento, academia da cidade',
+    hero_imagem_url: 'img/atividade-fisica.png'
   },
   {
     id: 'alimentacao-saudavel',
@@ -272,7 +273,8 @@ const MOCK_DATA = [
     },
     imagem_url: '',
     imagem_legenda: '',
-    tags: 'alimentacao, nutricao, comida, dieta, frutas, legumes, receita'
+    tags: 'alimentacao, nutricao, comida, dieta, frutas, legumes, receita',
+    hero_imagem_url: 'img/alimentacao.png'
   }
 ];
 

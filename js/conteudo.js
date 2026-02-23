@@ -83,8 +83,11 @@ async function loadConteudo() {
         }
 
         // Hero Image
-        if (id === 'atividade-fisica') {
-            document.getElementById('hero-image').style.display = 'block';
+        if (conteudo.hero_imagem_url) {
+            const heroEl = document.getElementById('hero-image');
+            heroEl.src = conteudo.hero_imagem_url;
+            heroEl.alt = conteudo.titulo;
+            heroEl.style.display = 'block';
         }
 
         // Benefit cards (carrossel horizontal)
